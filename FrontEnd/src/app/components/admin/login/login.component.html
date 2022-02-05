@@ -1,0 +1,38 @@
+<div class="d-flex text-center login-form">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-login">
+
+        <div class="form-group py-2">
+            <img src="./assets/img/3wdev.svg" alt="3wdev logo" height="87px" width="100px" />
+            <h1 class="h3 mb-3 font-weight-normal pt-4">Admin Login</h1>
+        </div>
+        <div class="alert alert-danger" [hidden]="!error">
+            {{ error}}
+        </div>
+        <div class="form-group py-1">
+            <input type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" placeholder="Enter votre Email" autofocus required/>
+            <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                <div *ngIf="f['email'].errors['required']">Email is required</div>
+                <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+            </div>
+        </div>
+        <div class="form-group py-1">
+            <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" placeholder="Enter votre Mot de passe" required/>
+            <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                <div *ngIf="f['password'].errors['required']">Password is required</div>
+                <div *ngIf="f['password'].errors['minlength']">
+                    Password must be at least 6 characters
+                </div>
+                <div *ngIf="f['password'].errors['maxlength']">
+                    Password must not exceed 40 characters
+                </div>
+            </div>
+        </div>
+        <div class="form-group p-2">
+            <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+        <div class="form-group">
+            <a routerLink="../reset-password">Modifier ou réinitialiser votre mot de passe!</a>
+        </div>
+
+    </form>
+</div>

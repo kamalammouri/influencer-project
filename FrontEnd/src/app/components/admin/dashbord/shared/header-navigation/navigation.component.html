@@ -1,0 +1,25 @@
+<ul class="navbar-nav float-right">
+    <li class="nav-item search-box">
+        <form role="search" class="app-search d-none d-md-block mr-3">
+            <input type="text" placeholder="Search..." class="form-control mt-0">
+            <a href="" class="active">
+                <i class="fa fa-search"></i>
+            </a>
+        </form>
+    </li>
+    <li class="nav-item dropdown" ngbDropdown placement="bottom-right">
+        <a ngbDropdownToggle class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="./assets/adminDashbord/images/users/1.jpg" alt="user" class="rounded-circle" width="31">
+        </a>
+        <div class="dropdown-menu user-dd" ngbDropdownMenu>
+            <a class="dropdown-item" href="javascript:void(0)">
+                <i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="javascript:void(0)">
+                <i class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="javascript:void(0" (click)="logout($event)">
+                <i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
+        </div>
+    </li>
+</ul>

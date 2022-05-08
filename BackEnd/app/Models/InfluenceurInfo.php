@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
 use App\Models\InstagramInfo;
 use App\Models\Influenceur;
 use App\Models\Quartier;
@@ -54,7 +53,8 @@ class InfluenceurInfo extends Model
 
     protected $hidden = [
         'influenceur_id',
-        'instagram_id'
+        'instagram_id',
+        'adresse_id',
     ];
 
 }

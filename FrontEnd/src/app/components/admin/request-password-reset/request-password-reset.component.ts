@@ -4,7 +4,6 @@ import { Router,ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AdminService } from 'src/app/services/admin.service';
 import { TokenService } from 'src/app/services/token.service';
-
 @Component({
   selector: 'app-request-password-reset',
   templateUrl: './request-password-reset.component.html',
@@ -33,7 +32,7 @@ export class RequestPasswordResetComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     ) {
 
-      if (this.tokenService.loggedIn()) {
+      if (this.tokenService.loggedInAdmin()) {
         this.router.navigate(['/admin']);
       }
 
@@ -64,17 +63,19 @@ export class RequestPasswordResetComponent implements OnInit {
     this.submitted = true;
 
     if (this.changePasswordForm.invalid) {
-      console.log("form is invalid");
+      this.toastr.error("form is invalid");
       return;
     }
 
     this.adminService.passwordResetProcess(this.changePasswordForm.value).subscribe(
       (result) => {
         this.successMsg = result;
+        this.toastr.success(this.successMsg.message);
         setTimeout(() => {this.router.navigateByUrl("admin/login")}, 2000);
       },
       (error) => {
         this.errors = error.error.message;
+        this.toastr.error(this.errors);
       }
     );
 

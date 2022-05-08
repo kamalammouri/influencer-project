@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AdminService } from 'src/app/services/admin.service';
 import { TokenService } from 'src/app/services/token.service';
-
 @Component({
   selector: 'admin-reset-password',
   templateUrl: './reset-password.component.html',
@@ -29,7 +28,7 @@ export class ResetPasswordComponent implements OnInit {
     private tokenService: TokenService,
     private router: Router,
     ) {
-      if (this.tokenService.loggedIn()) {
+      if (this.tokenService.loggedInAdmin()) {
         this.router.navigate(['/admin']);
       }
 
@@ -41,8 +40,7 @@ export class ResetPasswordComponent implements OnInit {
     }
 
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   get f(): { [key: string]: AbstractControl } {
     return this.form.controls;
@@ -59,9 +57,13 @@ export class ResetPasswordComponent implements OnInit {
     this.adminService.resetPassword(this.form.value).subscribe(
       (result) => {
         this.successMsg = result;
+        this.toastr.success('please check your email addresse');
+
       },
       (error) => {
         this.errors = error.error.message;
+        this.toastr.error('please enter a valid email');
+
       });
   }
 

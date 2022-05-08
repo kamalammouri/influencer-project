@@ -5,7 +5,7 @@ import { NotFoundComponent } from './components/website/not-found/not-found.comp
 import { TermsComponent } from './components/website/home/terms/terms.component';
 import { AccueilComponent } from './components/website/home/accueil/accueil.component';
 import { RegisterComponent } from './components/website/register/register.component';
-import { LoginComponent } from './components/website/login/login.component';
+import { LoginInfluenceurComponent } from './components/website/login/login.component';
 import { LoginAdminComponent } from './components/admin/login/login.component';
 import { FullComponent } from './components/admin/dashbord/layouts/full/full.component';
 import { ResetPasswordComponent } from './components/admin/reset-password/reset-password.component';
@@ -26,7 +26,7 @@ export const routes: Routes = [
   { path:  "",                       component:AccueilComponent},
   { path:  "terms",                  component:TermsComponent},
   { path:  "register",               component:RegisterComponent},
-  { path:  "login",                  component:LoginComponent},
+  { path:  "login",                  component:LoginInfluenceurComponent},
   { path:  "**",                     component:NotFoundComponent},
 ]
 

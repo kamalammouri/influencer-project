@@ -11,8 +11,8 @@ class Influenceur extends Authenticatable implements JWTSubject
 {
     use HasFactory;
 
-    protected $fillable = [ 'email','password','role'];
-    protected $hidden = [ 'id','password','created_at','updated_at'];
+    protected $fillable = [ 'id','email','password'];
+    protected $hidden = [ 'id','password'];
 
     public function getJWTIdentifier()
     {

@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from "rxjs";
-import { SortDirection } from "@angular/material/sort";
 import { environment } from '../../environments/environment'
 
 @Injectable({
@@ -9,6 +7,18 @@ import { environment } from '../../environments/environment'
 })
 export class InfluecneurService {
 
-  constructor(private httpClient: HttpClient){
+  constructor(private http: HttpClient){
+  }
+
+  login(data:any){
+    return this.http.post(environment.apiUrl+'/InfluenceurAuth/login',data);
+  }
+
+  resetPassword(data:any){
+    return this.http.post(environment.apiUrl+'/InfluenceurAuth/resetPasswordRaquest',data);
+  }
+
+  passwordResetProcess(data:any){
+    return this.http.post(environment.apiUrl+'/InfluenceurAuth/passwordResetProcess',data);
   }
 }

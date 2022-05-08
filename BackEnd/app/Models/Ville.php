@@ -20,4 +20,13 @@ class Ville extends Model
     public function quartier(){
         return $this->hasMany(Quartier::class);
     }
+    public function influenceurQuartier(){
+        return $this->hasOneThrough(InfluenceurInfo::class, Quartier::class,'ville_id','quartier_id','id','id');
+
+        /* return $this->hasOneThrough(InfluenceurInfo::class, Quartier::class,'ville_id','quartier_id','id','id');
+        'ville_id', // Foreign key on the quartiers table...
+        'quartier_id', // Foreign key on the influenceur_infos table...
+        'id', // Local key on the villes table...
+        'id' // Local key on the quartiers table...*/
+    }
 }

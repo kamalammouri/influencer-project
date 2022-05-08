@@ -22,10 +22,10 @@ class AdminController extends Controller
     }
 
 
-    public function getAllInfluenceur()
+    public function getAllInfluenceurs()
     {
-        $insat = InfluenceurInfo::with('instagram','influenceur','adresse.ville')->get();
-        return response()->json($insat);
+        $data = InfluenceurInfo::with('instagram','influenceur','adresse.ville')->get();
+        return response()->json($data);
     }
 
 }

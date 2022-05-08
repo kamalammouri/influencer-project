@@ -33,7 +33,7 @@ class AdminAuthController extends Controller
             return response()->json($validator->errors(), 422);
         }
         if (!$token = auth()->guard('admin-api')->attempt($validator->validated())) {
-            return response()->json(['error' => 'Email or Password is incorrect.'],401);
+            return response()->json(['message' => 'Email or Password is incorrect.'],404);
         }
 
         return $this->CreateNewToken($token);

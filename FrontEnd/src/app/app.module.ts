@@ -26,11 +26,13 @@ import { SpinnerComponent } from './components/admin/dashbord/shared/spinner.com
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { SweetAlert2Module } from "@sweetalert2/ngx-sweetalert2";
 
 /* Angular material */
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ResetPasswordComponent } from './components/admin/reset-password/reset-password.component';
 import { RequestPasswordResetComponent } from './components/admin/request-password-reset/request-password-reset.component';
+import { LoginInfluenceurComponent } from './components/website/login/login.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -41,6 +43,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 
 @NgModule({
   declarations: [
+    LoginInfluenceurComponent,
     LoginAdminComponent,
     AppComponent,
     DashbordInfluenceurComponent,
@@ -57,6 +60,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     RequestPasswordResetComponent,
   ],
   imports: [
+    SweetAlert2Module.forRoot(),
     NgbModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,

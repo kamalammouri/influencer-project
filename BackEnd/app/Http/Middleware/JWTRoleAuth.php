@@ -16,7 +16,7 @@ class JWTRoleAuth extends BaseMiddleware
         try {
             $token_role = JWTAuth::parseToken()->getClaim('role');
             $user = JWTAuth::parseToken()->authenticate();
-            if ($user || $token_role != $role) {
+            if (!$user || $token_role != $role) {
                 return response()->json(['message'=>'You are not authenticate or Invalid Token Role']);
             }
             else{

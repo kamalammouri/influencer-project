@@ -19,6 +19,8 @@ export class LoginAdminComponent implements OnInit {
   });
   submitted = false;
   data: any ;
+  public errors:any=null;
+  public successMsg:any=null;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -28,11 +30,9 @@ export class LoginAdminComponent implements OnInit {
     private router: Router,
     ) { }
 
-  public error:any=null;
-
   ngOnInit(): void {
 
-   if (this.tokenService.loggedIn()) {
+   if (this.tokenService.loggedInAdmin()) {
       this.router.navigate(['/admin']);
     }
 
@@ -57,25 +57,24 @@ export class LoginAdminComponent implements OnInit {
 
   onSubmit(): void {
     this.submitted = true;
+    this.errors=null;
+    this.successMsg=null;
 
     if (this.form.invalid) {
       return;
     }
     this.adminService.login(this.form.value).subscribe(
-      res => this.handleResponse(res),
-      error => this.handleError(error)
+      (result) => {
+        this.successMsg = result;
+        this.toastr.success(this.successMsg.message);
+        setTimeout(() => {this.router.navigateByUrl("admin")}, 1000);
+      },
+      (error) => {
+        this.errors = error.error.message;
+        this.toastr.error(this.errors);
+      }
       );
        //console.log(JSON.stringify(this.form.value, null, 2));
-  }
-  handleError(error: any) {
-    this.error = error.error.error;
-  }
-  handleResponse(data: any) {
-    console.log(data.access_token);
-    if(data.access_token){
-      this.tokenService.handle(data.access_token);
-      this.router.navigateByUrl('admin/home');
-    }
   }
 
 }

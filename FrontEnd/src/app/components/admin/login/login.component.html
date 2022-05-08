@@ -5,8 +5,11 @@
             <img src="./assets/img/3wdev.svg" alt="3wdev logo" height="87px" width="100px" />
             <h1 class="h3 mb-3 font-weight-normal pt-4">Admin Login</h1>
         </div>
-        <div class="alert alert-danger" [hidden]="!error">
-            {{ error}}
+        <div class="alert alert-danger" [hidden]="!errors">
+            {{ errors }}
+        </div>
+        <div *ngIf="successMsg != null" class="alert alert-success mt-3">
+            {{ successMsg?.message }}
         </div>
         <div class="form-group py-1">
             <input type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" placeholder="Enter votre Email" autofocus required/>

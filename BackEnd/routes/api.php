@@ -24,10 +24,9 @@ Route::prefix('AdminAuth')->name('admin.')->group(function(){
     Route::post('/login', [AdminAuthController::class, 'login']);
     Route::post('/resetPasswordRaquest', [AdminAuthController::class, 'resetPasswordRaquest']);
     Route::post('/passwordResetProcess', [AdminAuthController::class, 'passwordResetProcess']);
-
+    Route::get('/getAllInfluenceurs', [AdminController::class, 'getAllInfluenceurs']);
     Route::middleware(['jwt.role:admin'])->group(function(){
 
-    Route::get('/getAllInfluenceur', [AdminController::class, 'getAllInfluenceur']);
         Route::post('/logout', [AdminAuthController::class, 'logout']);
         Route::post('/refresh', [AdminAuthController::class, 'refresh']);
     });
@@ -38,6 +37,8 @@ Route::prefix('InfluenceurAuth')->middleware(['cors'])->name('influenceur.')->gr
 
     Route::post('/login', [InfluenceurAuthController::class, 'login']);
     Route::post('/register', [InfluenceurAuthController::class, 'register']);
+    Route::post('/resetPasswordRaquest', [InfluenceurAuthController::class, 'resetPasswordRaquest']);
+    Route::post('/passwordResetProcess', [InfluenceurAuthController::class, 'passwordResetProcess']);
 
     Route::middleware(['jwt.role:influenceur'])->group(function(){
         Route::post('/logout', [InfluenceurAuthController::class, 'logout']);

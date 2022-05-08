@@ -25,7 +25,7 @@ export class FullComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (!this.tokenService.loggedIn()) {
+    if (!this.tokenService.loggedInAdmin()) {
       this.router.navigate(['/admin/login']);
     }
 

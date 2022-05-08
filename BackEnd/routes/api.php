@@ -43,7 +43,6 @@ Route::prefix('InfluenceurAuth')->middleware(['cors'])->name('influenceur.')->gr
     Route::middleware(['jwt.role:influenceur'])->group(function(){
         Route::post('/logout', [InfluenceurAuthController::class, 'logout']);
         Route::post('/refresh', [InfluenceurAuthController::class, 'refresh']);
-
     });
 });
 

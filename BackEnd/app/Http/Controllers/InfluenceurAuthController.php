@@ -17,6 +17,16 @@ class InfluenceurAuthController extends Controller
         $this->middleware('jwt.role:influenceur', ['except' => ['login']]);
     }
 
+    public function register(Request $request){
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email',
+            'password' => 'required|string|min:6',
+        ]);
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+    }
+
     public function login(Request $request){
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',

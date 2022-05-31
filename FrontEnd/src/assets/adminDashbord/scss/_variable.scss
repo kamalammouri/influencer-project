@@ -212,7 +212,7 @@ $display5-weight: 300 !default;
 $display6-weight: 300 !default;
 $display7-weight: 300 !default;
 
-$headings-margin-bottom: (1rem / 2) !default;
+$headings-margin-bottom: calc(1rem / 2) !default;
 $headings-font-weight: 400 !default;
 $headings-color: inherit !default;
 

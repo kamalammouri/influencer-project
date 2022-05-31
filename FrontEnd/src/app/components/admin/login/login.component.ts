@@ -32,9 +32,9 @@ export class LoginAdminComponent implements OnInit {
 
   ngOnInit(): void {
 
-   if (this.tokenService.loggedInAdmin()) {
-      this.router.navigate(['/admin']);
-    }
+  //  if (this.tokenService.loggedInAdmin()) {
+  //     this.router.navigate(['/admin']);
+  //   }
 
     this.form = this.formBuilder.group(
       {
